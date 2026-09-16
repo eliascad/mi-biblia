@@ -1,12 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Biblia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palabra Viva | Descubre la Biblia</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome (para iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Mi Biblia</h1>
+
+  <!-- Fondo de Estrellas/Partículas (CSS Animado) -->
+  <div class="stars-container"></div>
+
+  <!-- Navegación -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-book-bible"></i> PALABRA VIVA
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proposito">Propósito</a></li>
+      <li><a href="#secciones">Recursos</a></li>
+      <li><a href="#contacto" class="btn-nav">Unirme</a></li>
+    </ul>
+  </nav>
+
+  <!-- Seccion Principal (Hero) -->
+  <header id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="cross-glow">✝</div>
+      <h1 class="glow-text">Descubre la Verdad que Transforma</h1>
+      <p>Un espacio dedicado al estudio, reflexión e inspiración diaria a través de la Sagrada Escritura.</p>
+      
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn btn-primary">
+          <i class="fa-brands fa-whatsapp"></i> Conectar por WhatsApp
+        </a>
+        <a href="#proposito" class="btn btn-secondary">Saber más</a>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </header>
+
+  <!-- Versículo del Día (Tarjetas de Impacto Visual) -->
+  <section class="verse-section">
+    <div class="verse-card">
+      <i class="fa-solid fa-quote-left quote-icon"></i>
+      <blockquote>
+        "Lámpara es a mis pies tu palabra, y lumbrera a mi camino."
+      </blockquote>
+      <cite>— Salmos 119:105</cite>
+    </div>
+  </section>
+
+  <!-- Sección Propósito -->
+  <section id="proposito" class="features">
+    <h2 class="section-title">Nuestro Propósito</h2>
+    <div class="underline"></div>
+
+    <div class="grid-container">
+      <div class="feature-card">
+        <div class="icon-box"><i class="fa-solid fa-heart"></i></div>
+        <h3>Fe & Esperanza</h3>
+        <p>Encuentra mensajes diarios de aliento y fortaleza para superar cualquier adversidad.</p>
+      </div>
+
+      <div class="feature-card highlight-card">
+        <div class="icon-box"><i class="fa-solid fa-hands-praying"></i></div>
+        <h3>Comunidad de Oración</h3>
+        <p>Acompañamiento espiritual y peticiones de oración abiertas a todos vía WhatsApp.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box"><i class="fa-solid fa-compass"></i></div>
+        <h3>Guía Diaria</h3>
+        <p>Devocionales y estudios bíblicos guiados para profundizar en tu conocimiento divino.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Informativo -->
+  <section class="banner">
+    <div class="banner-content">
+      <h2>"La palabra de Dios es viva y eficaz"</h2>
+      <p>Únete a nuestro grupo diario de estudio e inspiración donde compartimos reflexiones exclusivas.</p>
+    </div>
+  </section>
+
+  <!-- Llamado a la Acción / Contacto -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-card">
+      <h2>¿Quieres recibir la Palabra en tu teléfono?</h2>
+      <p>Escríbenos directamente a nuestro canal de WhatsApp. No vendemos nada, solo compartimos la fe.</p>
+      
+      <a href="https://wa.me/1234567890?text=Hola,%20me%20gustaría%20recibir%20los%20devocionales%20bíblicos" target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> Hablar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/+543735504819?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank" title="Contáctanos">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Palabra Viva. Todos los derechos reservados.</p>
+    <p class="sub-footer">Un rincón de paz e inspiración en la red.</p>
+  </footer>
+
 </body>
 </html>
