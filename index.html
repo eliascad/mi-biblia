@@ -3,124 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palabra Viva | Descubre la Biblia</title>
+  <title>Forrajería del Pilar | Tienda Online</title>
   
-  <!-- Google Fonts -->
+  <!-- Fonts y FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome (para iconos) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Estilos CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Fondo de Estrellas/Partículas (CSS Animado) -->
-  <div class="stars-container"></div>
+  <!-- Barra Superior de Info -->
+  <div class="top-bar">
+    <p><i class="fa-solid fa-truck-fast"></i> Envíos en Pilar y alrededores | <i class="fa-solid fa-location-dot"></i> Av. Luis Lagomarsino 461, Pilar</p>
+  </div>
 
-  <!-- Navegación -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fa-solid fa-book-bible"></i> PALABRA VIVA
-    </div>
-    <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#proposito">Propósito</a></li>
-      <li><a href="#secciones">Recursos</a></li>
-      <li><a href="#contacto" class="btn-nav">Unirme</a></li>
-    </ul>
-  </nav>
+  <!-- Header principal -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-paw"></i>
+        <span>FORRAJERÍA DEL PILAR</span>
+      </a>
 
-  <!-- Seccion Principal (Hero) -->
-  <header id="inicio" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="cross-glow">✝</div>
-      <h1 class="glow-text">Descubre la Verdad que Transforma</h1>
-      <p>Un espacio dedicado al estudio, reflexión e inspiración diaria a través de la Sagrada Escritura.</p>
-      
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn btn-primary">
-          <i class="fa-brands fa-whatsapp"></i> Conectar por WhatsApp
-        </a>
-        <a href="#proposito" class="btn btn-secondary">Saber más</a>
+      <!-- Buscador en tiempo real -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar alimento, marca, perro, gato...">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
-    </div>
-    <div class="scroll-down">
-      <i class="fa-solid fa-chevron-down"></i>
+
+      <!-- Icono del Carrito -->
+      <div class="cart-icon-wrapper" id="openCartBtn">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
     </div>
   </header>
 
-  <!-- Versículo del Día (Tarjetas de Impacto Visual) -->
-  <section class="verse-section">
-    <div class="verse-card">
-      <i class="fa-solid fa-quote-left quote-icon"></i>
-      <blockquote>
-        "Lámpara es a mis pies tu palabra, y lumbrera a mi camino."
-      </blockquote>
-      <cite>— Salmos 119:105</cite>
+  <!-- Banner Hero -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>Distribuidora de Alimentos Balanceados</h1>
+      <p>Más de 25 años acompañando a tu mascota con las mejores marcas.</p>
+      <a href="#catalogo" class="btn-hero">Ver Catálogo</a>
     </div>
   </section>
 
-  <!-- Sección Propósito -->
-  <section id="proposito" class="features">
-    <h2 class="section-title">Nuestro Propósito</h2>
-    <div class="underline"></div>
+  <!-- Contenido Principal: Filtros + Productos -->
+  <main id="catalogo" class="main-container">
+    
+    <!-- Filtros laterales/superiores -->
+    <aside class="filters">
+      <h3>Categorías</h3>
+      <ul>
+        <li><button class="filter-btn active" data-category="todos">Todos los Productos</button></li>
+        <li><button class="filter-btn" data-category="perros">Perros</button></li>
+        <li><button class="filter-btn" data-category="gatos">Gatos</button></li>
+        <li><button class="filter-btn" data-category="accesorios">Accesorios</button></li>
+      </ul>
+    </aside>
 
-    <div class="grid-container">
-      <div class="feature-card">
-        <div class="icon-box"><i class="fa-solid fa-heart"></i></div>
-        <h3>Fe & Esperanza</h3>
-        <p>Encuentra mensajes diarios de aliento y fortaleza para superar cualquier adversidad.</p>
+    <!-- Grilla de productos -->
+    <section class="products-grid" id="productsGrid">
+      <!-- Los productos se cargan dinámicamente con JavaScript -->
+    </section>
+
+  </main>
+
+  <!-- Modal del Carrito de Compras -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+      <div class="cart-header">
+        <h2>Tu Carrito de Compras</h2>
+        <span class="close-cart" id="closeCartBtn">&times;</span>
       </div>
 
-      <div class="feature-card highlight-card">
-        <div class="icon-box"><i class="fa-solid fa-hands-praying"></i></div>
-        <h3>Comunidad de Oración</h3>
-        <p>Acompañamiento espiritual y peticiones de oración abiertas a todos vía WhatsApp.</p>
+      <div class="cart-items" id="cartItemsContainer">
+        <!-- Elementos agregados al carrito -->
       </div>
 
-      <div class="feature-card">
-        <div class="icon-box"><i class="fa-solid fa-compass"></i></div>
-        <h3>Guía Diaria</h3>
-        <p>Devocionales y estudios bíblicos guiados para profundizar en tu conocimiento divino.</p>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0</span>
+        </div>
+        <button class="btn-checkout" id="checkoutWhatsappBtn">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp
+        </button>
       </div>
     </div>
-  </section>
-
-  <!-- Banner Informativo -->
-  <section class="banner">
-    <div class="banner-content">
-      <h2>"La palabra de Dios es viva y eficaz"</h2>
-      <p>Únete a nuestro grupo diario de estudio e inspiración donde compartimos reflexiones exclusivas.</p>
-    </div>
-  </section>
-
-  <!-- Llamado a la Acción / Contacto -->
-  <section id="contacto" class="contact-section">
-    <div class="contact-card">
-      <h2>¿Quieres recibir la Palabra en tu teléfono?</h2>
-      <p>Escríbenos directamente a nuestro canal de WhatsApp. No vendemos nada, solo compartimos la fe.</p>
-      
-      <a href="https://wa.me/+5493735504819
-        <i class="fa-brands fa-whatsapp"></i> Hablar por WhatsApp
-      </a>
-    </div>
-  </section>
+  </div>
 
   <!-- Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/+5493735504819
+  <a href="https://wa.me/541150582263" class="whatsapp-float" target="_blank">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Palabra Viva. Todos los derechos reservados.</p>
-    <p class="sub-footer">Un rincón de paz e inspiración en la red.</p>
+    <div class="footer-content">
+      <p><strong>Forrajería del Pilar</strong> - Distribuidora de Alimentos Balanceados</p>
+      <p>RP 8 / Av. Luis Lagomarsino 461, Pilar, Buenos Aires</p>
+      <p>WhatsApp: 11 5058-2263 | Email: forrajeriadelpilar@gmail.com</p>
+    </div>
+    <div class="footer-bottom">
+      &copy; Forrajería del Pilar. Todos los derechos reservados.
+    </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
