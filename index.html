@@ -1,185 +1,1167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Forrajería del Pilar — alimentos balanceados, piedras sanitarias y productos para perros y gatos.">
-  <title>Forrajería del Pilar | Alimentos para mascotas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorazonCreyente777 | Colección de Ebooks Espirituales</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ==========================================================================
+           RESET & CORE VARIABLES
+           ========================================================================== */
+        :root {
+            --bg-dark: #0A0D14;
+            --bg-dark-card: rgba(18, 24, 38, 0.7);
+            --bg-light: #FAF8F5;
+            --bg-light-card: #FFFFFF;
+            --accent-gold: #D4AF37;
+            --accent-gold-light: #F3E5AB;
+            --accent-gold-glow: rgba(212, 175, 55, 0.25);
+            --text-dark-main: #0F172A;
+            --text-dark-muted: #475569;
+            --text-light-main: #F8FAFC;
+            --text-light-muted: #94A3B8;
+            --border-glass: rgba(212, 175, 55, 0.2);
+            --border-light: rgba(226, 232, 240, 0.8);
+            --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.2);
+            --font-serif: 'Cinzel', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-light-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Particle Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .brand-font {
+            font-family: var(--font-serif);
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FFF 30%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-text-gold {
+            background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons & CTAs */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #E5C158 0%, #B8860B 100%);
+            color: #0A0D14;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light-main);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Ambient Glows */
+        .glow-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-gold {
+            background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+            width: 500px;
+            height: 500px;
+        }
+
+        /* ==========================================================================
+           HEADER / NAVBAR
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            background: rgba(10, 13, 20, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        /* ==========================================================================
+           HERO SECTION (DARK)
+           ========================================================================== */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            font-size: 0.875rem;
+            color: var(--accent-gold-light);
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light-muted);
+            margin-bottom: 36px;
+            font-weight: 300;
+            max-width: 540px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Mockup 3D Container */
+        .mockup-container {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .mockup-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-premium), var(--shadow-glow);
+            transform: rotateY(-8deg) rotateX(4deg);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .mockup-card:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        .book-stack-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: -20px;
+            padding: 20px 0;
+        }
+
+        .book-cover {
+            width: 140px;
+            height: 200px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .book-cover:nth-child(1) { transform: translateX(20px) scale(0.9); opacity: 0.8; }
+        .book-cover:nth-child(2) { transform: translateY(-10px) z-index: 2; border-color: #FFF; }
+        .book-cover:nth-child(3) { transform: translateX(-20px) scale(0.9); opacity: 0.8; }
+
+        .book-cover i { color: var(--accent-gold); margin-bottom: 8px; }
+        .book-cover span { font-family: var(--font-serif); font-size: 0.75rem; font-weight: 700; color: #FFF; }
+
+        /* ==========================================================================
+           PROBLEM SECTION (DARK)
+           ========================================================================== */
+        .section-padding {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-subtitle {
+            color: var(--accent-gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: var(--text-dark-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .glass-card {
+            background: var(--bg-dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 36px;
+            backdrop-filter: blur(12px);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glass);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #FFF;
+        }
+
+        .card-desc {
+            color: var(--text-light-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           SOLUTION & EBOOKS SECTION (LIGHT CREAM SECTION - CONTRAST)
+           ========================================================================== */
+        .section-light {
+            background-color: var(--bg-light);
+            color: var(--text-dark-main);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-light .section-title {
+            color: var(--text-dark-main);
+        }
+
+        .section-light .section-desc {
+            color: var(--text-dark-muted);
+        }
+
+        .ebooks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .light-card {
+            background: var(--bg-light-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .light-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .ebook-tag {
+            align-self: flex-start;
+            padding: 6px 12px;
+            background: rgba(212, 175, 55, 0.15);
+            color: #8B6508;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .ebook-price-single {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark-main);
+            margin-top: 20px;
+        }
+
+        /* ==========================================================================
+           BENEFITS SECTION (DARK)
+           ========================================================================== */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+        }
+
+        /* ==========================================================================
+           PRICING SECTION (LIGHT CREAM)
+           ========================================================================== */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--bg-light-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transform: scale(1.03);
+            background: #FFFFFF;
+        }
+
+        .badge-featured {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #E5C158, #B8860B);
+            color: #0A0D14;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .price-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-dark-main);
+            font-family: var(--font-serif);
+            margin: 20px 0;
+        }
+
+        .price-number span {
+            font-size: 1rem;
+            color: var(--text-dark-muted);
+            font-family: var(--font-sans);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #F1F5F9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dark-muted);
+            font-size: 0.95rem;
+        }
+
+        .feature-list li i {
+            color: #10B981;
+            flex-shrink: 0;
+        }
+
+        /* ==========================================================================
+           TESTIMONIALS PLACEHOLDER (DARK)
+           ========================================================================== */
+        .placeholder-box {
+            border: 2px dashed var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 60px 20px;
+            text-align: center;
+            background: rgba(18, 24, 38, 0.4);
+        }
+
+        .placeholder-box i {
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+
+        /* ==========================================================================
+           FAQ SECTION (LIGHT CREAM)
+           ========================================================================== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-light-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-question {
+            padding: 24px;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--text-dark-muted);
+            font-size: 0.95rem;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-icon {
+            transition: var(--transition-smooth);
+            color: var(--accent-gold);
+        }
+
+        /* Guarantee Badge */
+        .guarantee-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        /* ==========================================================================
+           FOOTER (DARK)
+           ========================================================================== */
+        footer {
+            background: #05070A;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 0 30px;
+            color: var(--text-light-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-light-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-subtitle {
+                margin: 0 auto 36px;
+            }
+            .hero-cta-group {
+                justify-content: center;
+            }
+            .hero-title {
+                font-size: 2.75rem;
+            }
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="announcement">
-    <div class="announcement__track">
-      <span>🚚 Envío gratis desde $30.000</span>
-      <span>🎁 10% OFF en tu primera compra</span>
-      <span>🐾 Atención personalizada</span>
-      <span>🚚 Envío gratis desde $30.000</span>
-      <span>🎁 10% OFF en tu primera compra</span>
-      <span>🐾 Atención personalizada</span>
-    </div>
-  </div>
 
-  <header class="site-header" id="inicio">
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Forrajería del Pilar inicio">
-        <span class="brand-mark">FP</span>
-        <span>
-          <strong>FORRAJERÍA</strong>
-          <small>DEL PILAR</small>
-        </span>
-      </a>
+    <!-- Particle Canvas background -->
+    <canvas id="particles-canvas"></canvas>
 
-      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <!-- Header / Navbar -->
+    <header id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i data-lucide="cross" style="color: var(--accent-gold);"></i>
+                CorazonCreyente<span>777</span>
+            </a>
+            <a href="#precios" class="btn-primary" style="padding: 10px 24px; font-size: 0.875rem;">Obtener Pack</a>
+        </div>
+    </header>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#categorias">Categorías</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#ofertas">Destacados</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button type="button" class="icon-button" id="searchButton" title="Buscar" aria-label="Buscar">⌕</button>
-        <button type="button" class="cart-button" id="cartButton" aria-label="Abrir carrito">
-          🛒 <span>Carrito</span><b id="cartCount">0</b>
-        </button>
-      </div>
-    </div>
-    <div class="search-panel container" id="searchPanel" hidden>
-      <div class="search-wrap">
-        <span>⌕</span>
-        <input id="searchInput" type="search" placeholder="Buscá alimento, marca o presentación...">
-        <button id="clearSearch" aria-label="Limpiar búsqueda">×</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
+    <!-- HERO SECTION (DARK) -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">ALIMENTACIÓN Y CUIDADO ANIMAL</p>
-          <h1>Todo para tus mascotas, <span>más cerca.</span></h1>
-          <p class="hero-text">Alimentos balanceados, piedras sanitarias y productos seleccionados para perros y gatos. Compra online o escribinos por WhatsApp.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#ofertas">Ver ofertas <span>→</span></a>
-            <a class="btn btn-ghost" href="https://wa.me/541150582263" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
-          </div>
-          <div class="hero-proof">
-            <div><strong>+25</strong><span>años de experiencia</span></div>
-            <div><strong>30K+</strong><span>envío gratis</span></div>
-            <div><strong>100%</strong><span>atención real</span></div>
-          </div>
+        <div class="glow-effect glow-gold" style="top: 10%; left: -10%;"></div>
+        <div class="glow-effect glow-gold" style="bottom: 10%; right: -10%;"></div>
+        
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles" style="width: 16px;"></i> Colección Digital Espiritual
+                </div>
+                <h1 class="hero-title">Fortalece tu Fe y Comprende la Palabra <span class="gradient-text-gold">sin Complicaciones</span></h1>
+                <p class="hero-subtitle">Descubre una guía clara, práctica y cercana para acercarte a Dios, entender la Biblia fácilmente y enriquecer tu vida diaria de oración.</p>
+                <div class="hero-cta-group">
+                    <a href="#precios" class="btn-primary">
+                        Obtener Colección Completa <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#ebooks" class="btn-secondary">
+                        Explorar Ebooks
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3D Mockup Display -->
+            <div class="mockup-container reveal">
+                <div class="mockup-card">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <span style="color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;">FORMATO DIGITAL · DESCARGA INMEDIATA</span>
+                    </div>
+                    <div class="book-stack-visual">
+                        <div class="book-cover">
+                            <i data-lucide="book-open"></i>
+                            <span>Religión</span>
+                        </div>
+                        <div class="book-cover">
+                            <i data-lucide="book-marked"></i>
+                            <span>La Biblia</span>
+                        </div>
+                        <div class="book-cover">
+                            <i data-lucide="heart"></i>
+                            <span>Oraciones</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px; color: var(--text-light-muted); font-size: 0.85rem;">
+                        <i data-lucide="smartphone" style="width: 14px; vertical-align: middle;"></i> Compatible con celulares, tabletas y lectores digitales
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-visual reveal">
-          <div class="hero-card hero-card--photo">
-            <div class="hero-card__badge">ENVÍO GRATIS<br><strong>+ $30.000</strong></div>
-            <div class="hero-card__caption"><small>FORRAJERÍA DEL PILAR</small><strong>Calidad que tu mascota siente.</strong></div>
-          </div>
-          <div class="floating-note floating-note--one">🐶 <b>Marcas líderes</b><small>Directo de fábrica</small></div>
-          <div class="floating-note floating-note--two">🐱 <b>Compra simple</b><small>Rápido y sin vueltas</small></div>
+    </section>
+
+    <!-- PROBLEM SECTION (DARK) -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">¿Te has sentido así?</p>
+                <h2 class="section-title gradient-text">El Desafío de Crecer en la Fe Hoy En Día</h2>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="glass-card reveal">
+                    <div class="card-icon"><i data-lucide="help-circle"></i></div>
+                    <h3 class="card-title">¿Por dónde empezar?</h3>
+                    <p class="card-desc">Sientes el deseo profundo de acercarte a Dios, pero no sabes cuál es el primer paso práctico para construir un pilar espiritual sólido.</p>
+                </div>
+                <div class="glass-card reveal">
+                    <div class="card-icon"><i data-lucide="book-x"></i></div>
+                    <h3 class="card-title">Lectura compleja</h3>
+                    <p class="card-desc">Intentas leer la Biblia, pero la sintaxis y los tecnicismos te resultan difíciles de comprender o aplicar a tus vivencias actuales.</p>
+                </div>
+                <div class="glass-card reveal">
+                    <div class="card-icon"><i data-lucide="message-square-off"></i></div>
+                    <h3 class="card-title">Dificultad al orar</h3>
+                    <p class="card-desc">Deseas hablar con Dios en momentos difíciles o de gratitud, pero te cuesta encontrar las palabras correctas para expresar lo que sientes.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="trust-strip">
-      <div class="container trust-grid">
-        <div><span>01</span><div><strong>Más de 25 años</strong><p>Trayectoria y confianza.</p></div></div>
-        <div><span>02</span><div><strong>Marcas reconocidas</strong><p>Calidad y variedad.</p></div></div>
-        <div><span>03</span><div><strong>Atención personalizada</strong><p>Te ayudamos a elegir.</p></div></div>
-      </div>
-    </section>
+    <!-- SOLUTION & EBOOKS SECTION (LIGHT CREAM SECTION - CONTRAST) -->
+    <section class="section-padding section-light" id="ebooks">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle" style="color: #8B6508;">La Solución</p>
+                <h2 class="section-title">Una Guía Sencilla, Directa y Transformadora</h2>
+                <p class="section-desc">Diseñados especialmente para ti, sin importar si estás iniciando o si buscas renovar tu vida espiritual.</p>
+            </div>
 
-    <section class="section categories" id="categorias">
-      <div class="container">
-        <div class="section-head reveal">
-          <div><p class="eyebrow">ENCONTRÁ LO QUE NECESITÁS</p><h2>Comprá por categoría</h2></div>
-          <p>Una navegación visual y simple para encontrar rápido lo que tu mascota necesita.</p>
+            <div class="ebooks-grid">
+                <!-- Ebook 1 -->
+                <div class="light-card reveal">
+                    <div>
+                        <span class="ebook-tag">Ebook 1</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende de Religión</h3>
+                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Comprende los fundamentos clave de la fe cristiana explicados de forma clara, amigable y estructurada.</p>
+                    </div>
+                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
+                </div>
+
+                <!-- Ebook 2 -->
+                <div class="light-card reveal">
+                    <div>
+                        <span class="ebook-tag">Ebook 2</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende de la Biblia</h3>
+                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Un estudio bíblico guiado que elimina la complejidad para que comprendas las Sagradas Escrituras sin tecnicismos.</p>
+                    </div>
+                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
+                </div>
+
+                <!-- Ebook 3 -->
+                <div class="light-card reveal">
+                    <div>
+                        <span class="ebook-tag">Ebook 3</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende Oraciones</h3>
+                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Una recopilación de oraciones poderosas listas para aplicar en distintas situaciones: protección, sanación, paz y gratitud.</p>
+                    </div>
+                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
+                </div>
+            </div>
         </div>
-        <div class="category-grid">
-          <button class="category-card category-card--dog filter-trigger reveal" data-filter="perro"><span class="category-icon">🐶</span><span><small>01</small><strong>Alimento para perro</strong></span><span class="arrow">↗</span></button>
-          <button class="category-card category-card--cat filter-trigger reveal" data-filter="gato"><span class="category-icon">🐱</span><span><small>02</small><strong>Alimento para gato</strong></span><span class="arrow">↗</span></button>
-          <button class="category-card category-card--sand filter-trigger reveal" data-filter="piedras"><span class="category-icon">🪨</span><span><small>03</small><strong>Piedras sanitarias</strong></span><span class="arrow">↗</span></button>
+    </section>
+
+    <!-- BENEFITS SECTION (DARK) -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Beneficios Principales</p>
+                <h2 class="section-title gradient-text">Todo lo que Necesitas para tu Crecimiento Espiritual</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
+                    <div>
+                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Lenguaje Claro y Accesible</h4>
+                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Sin conceptos rebuscados. Contenido directo al corazón y fácil de asimilar.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon"><i data-lucide="zap"></i></div>
+                    <div>
+                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Aplicación Diaria</h4>
+                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Enseñanzas y oraciones diseñadas para integrarse en tu rutina diaria.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon"><i data-lucide="download"></i></div>
+                    <div>
+                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Acceso e Inmediatez</h4>
+                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Descarga tus ebooks al instante en cualquier dispositivo móvil o computadora.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
+                    <div>
+                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Garantía de Valor</h4>
+                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Respaldado por la marca CorazonCreyente777 y su compromiso de calidad.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section products-section" id="ofertas">
-      <div class="container">
-        <div class="section-head section-head--products reveal">
-          <div><p class="eyebrow">PRECIOS ACTUALES DE REFERENCIA</p><h2>Ofertas que valen la pena</h2></div>
-          <div class="tabs" role="tablist" aria-label="Filtros de productos">
-            <button class="tab active" data-filter="todos">Todos</button>
-            <button class="tab" data-filter="perro">Perros</button>
-            <button class="tab" data-filter="gato">Gatos</button>
-            <button class="tab" data-filter="piedras">Piedras</button>
-          </div>
+    <!-- TESTIMONIALS PLACEHOLDER (DARK) -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="placeholder-box reveal">
+                <i data-lucide="quote" style="width: 40px; height: 40px;"></i>
+                <h3 class="gradient-text-gold" style="font-size: 1.25rem; margin-bottom: 8px;">Próximamente: Historias de la Comunidad</h3>
+                <p style="color: var(--text-light-muted); max-width: 500px; margin: 0 auto; font-size: 0.9rem;">
+                    Esta sección está reservada para compartir los testimonios reales de nuestra comunidad a medida que compartan sus experiencias con la colección CorazonCreyente777.
+                </p>
+            </div>
         </div>
-        <div class="product-grid" id="productGrid"></div>
-        <div class="empty-state" id="emptyState" hidden><strong>No encontramos productos.</strong><p>Probá con otra palabra o categoría.</p></div>
-      </div>
     </section>
 
-    <section class="section feature-banner" id="nosotros">
-      <div class="container feature-grid">
-        <div class="feature-image reveal"></div>
-        <div class="feature-copy reveal">
-          <p class="eyebrow">25+ AÑOS EN PILAR</p>
-          <h2>Del depósito a tu casa, con atención de barrio.</h2>
-          <p>Una propuesta inspirada en la cercanía: productos de marcas reconocidas, variedad de presentaciones y una compra pensada para que no pierdas tiempo.</p>
-          <div class="feature-list">
-            <div><b>✓</b><span>Compra online con carrito funcional.</span></div>
-            <div><b>✓</b><span>Consulta rápida por WhatsApp.</span></div>
-            <div><b>✓</b><span>Catálogo filtrable por tipo de producto.</span></div>
-          </div>
-          <a class="text-link" href="#contacto">Conocé más sobre nosotros →</a>
+    <!-- PRICING SECTION (LIGHT CREAM) -->
+    <section class="section-padding section-light" id="precios">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle" style="color: #8B6508;">Inversión en tu Fe</p>
+                <h2 class="section-title">Elige la Opción Ideal para Ti</h2>
+            </div>
+
+            <div class="pricing-cards">
+                <!-- Individual -->
+                <div class="pricing-card reveal">
+                    <h3 style="font-size: 1.25rem; color: var(--text-dark-main);">Ebook Individual</h3>
+                    <p style="color: var(--text-dark-muted); font-size: 0.85rem; margin-top: 4px;">Adquiere el título de tu preferencia</p>
+                    <div class="price-number">$5 <span>USD / c.u.</span></div>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> Elección de 1 Ebook digital</li>
+                        <li><i data-lucide="check"></i> Formato de lectura accesible</li>
+                        <li><i data-lucide="check"></i> Descarga inmediata</li>
+                    </ul>
+                    <a href="https://wa.me/message/MBKUSJ3RNLP3B1" class="btn-secondary" style="width: 100%; color: var(--text-dark-main); border-color: #CBD5E1;" target="_blank" rel="noopener noreferrer">Comprar Individual</a>
+                </div>
+
+                <!-- Pack Combinado (Featured) -->
+                <div class="pricing-card featured reveal">
+                    <div class="badge-featured">Opción Recomendada · Ahorra $3 USD</div>
+                    <h3 style="font-size: 1.5rem; color: var(--text-dark-main);">Pack Combinado (3 Ebooks)</h3>
+                    <p style="color: var(--text-dark-muted); font-size: 0.85rem; margin-top: 4px;">Colección completa CorazonCreyente777</p>
+                    <div class="price-number" style="color: #8B6508;">$12 <span>USD</span></div>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> <strong>Ebook 1:</strong> Aprende de Religión</li>
+                        <li><i data-lucide="check"></i> <strong>Ebook 2:</strong> Aprende de la Biblia</li>
+                        <li><i data-lucide="check"></i> <strong>Ebook 3:</strong> Aprende Oraciones</li>
+                        <li><i data-lucide="check"></i> Descarga de la colección en un solo enlace</li>
+                        <li><i data-lucide="check"></i> Acceso permanente a los contenidos</li>
+                    </ul>
+                    <a href="https://wa.me/message/MBKUSJ3RNLP3B1" class="btn-primary" style="width: 100%;" target="_blank" rel="noopener noreferrer">
+                        Obtener Pack Completo por $12 USD
+                    </a>
+                </div>
+            </div>
+
+            <!-- Guarantee Notice -->
+            <div class="guarantee-box reveal" style="max-width: 800px; margin: 40px auto 0;">
+                <i data-lucide="shield" style="width: 48px; height: 48px; color: #8B6508; flex-shrink: 0;"></i>
+                <div>
+                    <h4 style="color: var(--text-dark-main); font-size: 1.05rem; margin-bottom: 4px;">Garantía de Satisfacción de 7 Días</h4>
+                    <p style="color: var(--text-dark-muted); font-size: 0.9rem;">Pruébalo sin riesgo. Si dentro de los primeros 7 días consideras que el contenido no aporta a tu vida espiritual, puedes solicitar la devolución de tu dinero.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section testimonials">
-      <div class="container">
-        <div class="section-head reveal"><div><p class="eyebrow">OPINIONES</p><h2>Lo que dicen nuestros clientes</h2></div><div class="slider-controls"><button id="prevTestimonial">←</button><button id="nextTestimonial">→</button></div></div>
-        <div class="testimonial-card reveal" id="testimonialCard"></div>
-      </div>
+    <!-- FAQ SECTION (LIGHT CREAM) -->
+    <section class="section-padding section-light" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle" style="color: #8B6508;">Resolvamos tus dudas</p>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Cómo recibo los ebooks tras realizar la compra?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Los ebooks se entregan en formato digital de descarga inmediata. Si adquieres el pack combinado de $12 USD, recibirás los tres ebooks organizados mediante un solo enlace de descarga.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Necesito conocimientos previos sobre la Biblia o religión?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        No. La colección está desarrollada con un lenguaje claro, sencillo y sin tecnicismos complicados, ideal tanto para principiantes como para personas que desean fortalecer su fe.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿En qué dispositivos puedo leer los ebooks?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Al ser en formato digital accesible, puedes leerlos cómodamente en tu teléfono celular, tableta, lector de libros electrónicos o computadora.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Puedo comprar los ebooks por separado?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Sí, cada ebook puede adquirirse de forma individual a $5 USD cada uno. Sin embargo, con el pack combinado obtienes los tres ebooks por $12 USD (ahorrando $3 USD en total).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>¿Cómo funciona la garantía de devolución?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Ofrecemos una garantía de satisfacción de 7 días. Si el producto no cumple con tus expectativas, cuentas con ese plazo para solicitar el reembolso de tu compra.
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="newsletter">
-      <div class="container newsletter-inner reveal">
-        <div><p class="eyebrow">COMUNIDAD FORRAJERA</p><h2>Recibí ofertas y novedades.</h2><p>Sin spam. Sólo productos, promociones y contenido útil.</p></div>
-        <form id="newsletterForm" class="newsletter-form"><input required type="email" placeholder="tu@email.com" aria-label="Tu email"><button class="btn btn-primary" type="submit">Suscribirme</button></form>
-      </div>
-    </section>
-  </main>
+    <!-- FOOTER (DARK) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo">
+                    <i data-lucide="cross" style="color: var(--accent-gold);"></i>
+                    CorazonCreyente<span>777</span>
+                </a>
+                <div class="footer-links">
+                    <a href="#ebooks">Ebooks</a>
+                    <a href="#precios">Precios</a>
+                    <a href="mailto:ventas@corazoncreyente777.com">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CorazonCreyente777. Todos los derechos reservados. Formato digital.</p>
+            </div>
+        </div>
+    </footer>
 
-  <footer class="footer" id="contacto">
-    <div class="container footer-grid">
-      <div class="footer-brand"><a class="brand brand--light" href="#inicio"><span class="brand-mark">FP</span><span><strong>FORRAJERÍA</strong><small>DEL PILAR</small></span></a><p>Alimentos balanceados y productos para mascotas, con atención personalizada.</p></div>
-      <div><h4>Explorá</h4><a href="#categorias">Categorías</a><a href="#ofertas">Ofertas</a><a href="#ofertas">Destacados</a><a href="#nosotros">Nosotros</a></div>
-      <div><h4>Contacto</h4><a href="tel:+541150582263">11 5058-2263</a><a href="mailto:info@forrajeriadelpilar.com.ar">info@forrajeriadelpilar.com.ar</a><span>RP 8 / Av. Luis Lagomarsino 461<br>Pilar, Provincia de Buenos Aires</span></div>
-      <div><h4>Seguinos</h4><a href="https://instagram.com/forrajeriadelpilar" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/541150582263" target="_blank" rel="noreferrer">WhatsApp ↗</a></div>
-    </div>
-    <div class="container footer-bottom"><span>© <span id="year"></span> Forrajería del Pilar</span><span>Diseño frontend independiente inspirado en la estructura pública del sitio de referencia.</span></div>
-  </footer>
+    <!-- Lucide Icons Script Init -->
+    <script>
+        lucide.createIcons();
 
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <div class="cart-panel">
-      <div class="cart-head"><div><p class="eyebrow">TU PEDIDO</p><h3>Carrito</h3></div><button type="button" id="closeCart" aria-label="Cerrar carrito">×</button></div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-empty" id="cartEmpty"><div>🛒</div><strong>Tu carrito está vacío</strong><p>Agregá productos y los vas a ver acá.</p></div>
-      <div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div><button type="button" class="btn btn-primary" id="checkoutButton">Continuar por WhatsApp</button></div>
-    </div>
-  </aside>
+        // Canvas Particles System
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-  <div class="toast" id="toast" role="status"></div>
-  <button type="button" class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
-  <a class="wa-float" href="https://wa.me/541150582263" target="_blank" rel="noreferrer" aria-label="WhatsApp">💬</a>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-  <script src="script.js"></script>
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(window.innerWidth / 20);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // Navbar Scroll Blur Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Toggle Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Scroll Reveal Animations
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
