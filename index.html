@@ -1,117 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forrajería del Pilar | Tienda Online</title>
-  
-  <!-- Fonts y FontAwesome -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Forrajería del Pilar — alimentos balanceados, piedras sanitarias y productos para perros y gatos.">
+  <title>Forrajería del Pilar | Alimentos para mascotas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- Barra Superior de Info -->
-  <div class="top-bar">
-    <p><i class="fa-solid fa-truck-fast"></i> Envíos en Pilar y alrededores | <i class="fa-solid fa-location-dot"></i> Av. Luis Lagomarsino 461, Pilar</p>
+  <div class="announcement">
+    <div class="announcement__track">
+      <span>🚚 Envío gratis desde $30.000</span>
+      <span>🎁 10% OFF en tu primera compra</span>
+      <span>🐾 Atención personalizada</span>
+      <span>🚚 Envío gratis desde $30.000</span>
+      <span>🎁 10% OFF en tu primera compra</span>
+      <span>🐾 Atención personalizada</span>
+    </div>
   </div>
 
-  <!-- Header principal -->
-  <header class="header">
-    <div class="header-container">
-      <a href="#" class="logo">
-        <i class="fa-solid fa-paw"></i>
-        <span>FORRAJERÍA DEL PILAR</span>
+  <header class="site-header" id="inicio">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Forrajería del Pilar inicio">
+        <span class="brand-mark">FP</span>
+        <span>
+          <strong>FORRAJERÍA</strong>
+          <small>DEL PILAR</small>
+        </span>
       </a>
 
-      <!-- Buscador en tiempo real -->
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar alimento, marca, perro, gato...">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
-      <!-- Icono del Carrito -->
-      <div class="cart-icon-wrapper" id="openCartBtn">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span class="cart-count" id="cartCount">0</span>
+      <nav class="nav-links" id="navLinks">
+        <a href="#categorias">Categorías</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#ofertas">Destacados</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-button" id="searchButton" title="Buscar" aria-label="Buscar">⌕</button>
+        <button type="button" class="cart-button" id="cartButton" aria-label="Abrir carrito">
+          🛒 <span>Carrito</span><b id="cartCount">0</b>
+        </button>
+      </div>
+    </div>
+    <div class="search-panel container" id="searchPanel" hidden>
+      <div class="search-wrap">
+        <span>⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscá alimento, marca o presentación...">
+        <button id="clearSearch" aria-label="Limpiar búsqueda">×</button>
       </div>
     </div>
   </header>
 
-  <!-- Banner Hero -->
-  <section class="hero-banner">
-    <div class="hero-content">
-      <h1>Distribuidora de Alimentos Balanceados</h1>
-      <p>Más de 25 años acompañando a tu mascota con las mejores marcas.</p>
-      <a href="#catalogo" class="btn-hero">Ver Catálogo</a>
-    </div>
-  </section>
-
-  <!-- Contenido Principal: Filtros + Productos -->
-  <main id="catalogo" class="main-container">
-    
-    <!-- Filtros laterales/superiores -->
-    <aside class="filters">
-      <h3>Categorías</h3>
-      <ul>
-        <li><button class="filter-btn active" data-category="todos">Todos los Productos</button></li>
-        <li><button class="filter-btn" data-category="perros">Perros</button></li>
-        <li><button class="filter-btn" data-category="gatos">Gatos</button></li>
-        <li><button class="filter-btn" data-category="accesorios">Accesorios</button></li>
-      </ul>
-    </aside>
-
-    <!-- Grilla de productos -->
-    <section class="products-grid" id="productsGrid">
-      <!-- Los productos se cargan dinámicamente con JavaScript -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">ALIMENTACIÓN Y CUIDADO ANIMAL</p>
+          <h1>Todo para tus mascotas, <span>más cerca.</span></h1>
+          <p class="hero-text">Alimentos balanceados, piedras sanitarias y productos seleccionados para perros y gatos. Compra online o escribinos por WhatsApp.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#ofertas">Ver ofertas <span>→</span></a>
+            <a class="btn btn-ghost" href="https://wa.me/541150582263" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+          </div>
+          <div class="hero-proof">
+            <div><strong>+25</strong><span>años de experiencia</span></div>
+            <div><strong>30K+</strong><span>envío gratis</span></div>
+            <div><strong>100%</strong><span>atención real</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-card hero-card--photo">
+            <div class="hero-card__badge">ENVÍO GRATIS<br><strong>+ $30.000</strong></div>
+            <div class="hero-card__caption"><small>FORRAJERÍA DEL PILAR</small><strong>Calidad que tu mascota siente.</strong></div>
+          </div>
+          <div class="floating-note floating-note--one">🐶 <b>Marcas líderes</b><small>Directo de fábrica</small></div>
+          <div class="floating-note floating-note--two">🐱 <b>Compra simple</b><small>Rápido y sin vueltas</small></div>
+        </div>
+      </div>
     </section>
 
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div><span>01</span><div><strong>Más de 25 años</strong><p>Trayectoria y confianza.</p></div></div>
+        <div><span>02</span><div><strong>Marcas reconocidas</strong><p>Calidad y variedad.</p></div></div>
+        <div><span>03</span><div><strong>Atención personalizada</strong><p>Te ayudamos a elegir.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section categories" id="categorias">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><p class="eyebrow">ENCONTRÁ LO QUE NECESITÁS</p><h2>Comprá por categoría</h2></div>
+          <p>Una navegación visual y simple para encontrar rápido lo que tu mascota necesita.</p>
+        </div>
+        <div class="category-grid">
+          <button class="category-card category-card--dog filter-trigger reveal" data-filter="perro"><span class="category-icon">🐶</span><span><small>01</small><strong>Alimento para perro</strong></span><span class="arrow">↗</span></button>
+          <button class="category-card category-card--cat filter-trigger reveal" data-filter="gato"><span class="category-icon">🐱</span><span><small>02</small><strong>Alimento para gato</strong></span><span class="arrow">↗</span></button>
+          <button class="category-card category-card--sand filter-trigger reveal" data-filter="piedras"><span class="category-icon">🪨</span><span><small>03</small><strong>Piedras sanitarias</strong></span><span class="arrow">↗</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="ofertas">
+      <div class="container">
+        <div class="section-head section-head--products reveal">
+          <div><p class="eyebrow">PRECIOS ACTUALES DE REFERENCIA</p><h2>Ofertas que valen la pena</h2></div>
+          <div class="tabs" role="tablist" aria-label="Filtros de productos">
+            <button class="tab active" data-filter="todos">Todos</button>
+            <button class="tab" data-filter="perro">Perros</button>
+            <button class="tab" data-filter="gato">Gatos</button>
+            <button class="tab" data-filter="piedras">Piedras</button>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state" id="emptyState" hidden><strong>No encontramos productos.</strong><p>Probá con otra palabra o categoría.</p></div>
+      </div>
+    </section>
+
+    <section class="section feature-banner" id="nosotros">
+      <div class="container feature-grid">
+        <div class="feature-image reveal"></div>
+        <div class="feature-copy reveal">
+          <p class="eyebrow">25+ AÑOS EN PILAR</p>
+          <h2>Del depósito a tu casa, con atención de barrio.</h2>
+          <p>Una propuesta inspirada en la cercanía: productos de marcas reconocidas, variedad de presentaciones y una compra pensada para que no pierdas tiempo.</p>
+          <div class="feature-list">
+            <div><b>✓</b><span>Compra online con carrito funcional.</span></div>
+            <div><b>✓</b><span>Consulta rápida por WhatsApp.</span></div>
+            <div><b>✓</b><span>Catálogo filtrable por tipo de producto.</span></div>
+          </div>
+          <a class="text-link" href="#contacto">Conocé más sobre nosotros →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head reveal"><div><p class="eyebrow">OPINIONES</p><h2>Lo que dicen nuestros clientes</h2></div><div class="slider-controls"><button id="prevTestimonial">←</button><button id="nextTestimonial">→</button></div></div>
+        <div class="testimonial-card reveal" id="testimonialCard"></div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-inner reveal">
+        <div><p class="eyebrow">COMUNIDAD FORRAJERA</p><h2>Recibí ofertas y novedades.</h2><p>Sin spam. Sólo productos, promociones y contenido útil.</p></div>
+        <form id="newsletterForm" class="newsletter-form"><input required type="email" placeholder="tu@email.com" aria-label="Tu email"><button class="btn btn-primary" type="submit">Suscribirme</button></form>
+      </div>
+    </section>
   </main>
 
-  <!-- Modal del Carrito de Compras -->
-  <div class="cart-modal" id="cartModal">
-    <div class="cart-modal-content">
-      <div class="cart-header">
-        <h2>Tu Carrito de Compras</h2>
-        <span class="close-cart" id="closeCartBtn">&times;</span>
-      </div>
-
-      <div class="cart-items" id="cartItemsContainer">
-        <!-- Elementos agregados al carrito -->
-      </div>
-
-      <div class="cart-footer">
-        <div class="cart-total">
-          <span>Total:</span>
-          <span id="cartTotalPrice">$0</span>
-        </div>
-        <button class="btn-checkout" id="checkoutWhatsappBtn">
-          <i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp
-        </button>
-      </div>
+  <footer class="footer" id="contacto">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="brand brand--light" href="#inicio"><span class="brand-mark">FP</span><span><strong>FORRAJERÍA</strong><small>DEL PILAR</small></span></a><p>Alimentos balanceados y productos para mascotas, con atención personalizada.</p></div>
+      <div><h4>Explorá</h4><a href="#categorias">Categorías</a><a href="#ofertas">Ofertas</a><a href="#ofertas">Destacados</a><a href="#nosotros">Nosotros</a></div>
+      <div><h4>Contacto</h4><a href="tel:+541150582263">11 5058-2263</a><a href="mailto:info@forrajeriadelpilar.com.ar">info@forrajeriadelpilar.com.ar</a><span>RP 8 / Av. Luis Lagomarsino 461<br>Pilar, Provincia de Buenos Aires</span></div>
+      <div><h4>Seguinos</h4><a href="https://instagram.com/forrajeriadelpilar" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://wa.me/541150582263" target="_blank" rel="noreferrer">WhatsApp ↗</a></div>
     </div>
-  </div>
-
-  <!-- Botón Flotante de WhatsApp -->
-  <a href="https://wa.me/541150582263" class="whatsapp-float" target="_blank">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <p><strong>Forrajería del Pilar</strong> - Distribuidora de Alimentos Balanceados</p>
-      <p>RP 8 / Av. Luis Lagomarsino 461, Pilar, Buenos Aires</p>
-      <p>WhatsApp: 11 5058-2263 | Email: forrajeriadelpilar@gmail.com</p>
-    </div>
-    <div class="footer-bottom">
-      &copy; Forrajería del Pilar. Todos los derechos reservados.
-    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Forrajería del Pilar</span><span>Diseño frontend independiente inspirado en la estructura pública del sitio de referencia.</span></div>
   </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-panel">
+      <div class="cart-head"><div><p class="eyebrow">TU PEDIDO</p><h3>Carrito</h3></div><button type="button" id="closeCart" aria-label="Cerrar carrito">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-empty" id="cartEmpty"><div>🛒</div><strong>Tu carrito está vacío</strong><p>Agregá productos y los vas a ver acá.</p></div>
+      <div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div><button type="button" class="btn btn-primary" id="checkoutButton">Continuar por WhatsApp</button></div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+  <button type="button" class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+  <a class="wa-float" href="https://wa.me/541150582263" target="_blank" rel="noreferrer" aria-label="WhatsApp">💬</a>
 
   <script src="script.js"></script>
 </body>
