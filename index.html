@@ -3,1165 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CorazonCreyente777 | Colección de Ebooks Espirituales</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>El Remanso Forrajería Mayorista | Alimento y Forraje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="forrajeria-ai/public/style.css">
     <style>
-        /* ==========================================================================
-           RESET & CORE VARIABLES
-           ========================================================================== */
-        :root {
-            --bg-dark: #0A0D14;
-            --bg-dark-card: rgba(18, 24, 38, 0.7);
-            --bg-light: #FAF8F5;
-            --bg-light-card: #FFFFFF;
-            --accent-gold: #D4AF37;
-            --accent-gold-light: #F3E5AB;
-            --accent-gold-glow: rgba(212, 175, 55, 0.25);
-            --text-dark-main: #0F172A;
-            --text-dark-muted: #475569;
-            --text-light-main: #F8FAFC;
-            --text-light-muted: #94A3B8;
-            --border-glass: rgba(212, 175, 55, 0.2);
-            --border-light: rgba(226, 232, 240, 0.8);
-            --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.2);
-            --font-serif: 'Cinzel', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --radius-lg: 20px;
-            --radius-md: 12px;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .chatbot-toggle { bottom: 96px; right: 22px; }
+        .chatbot-window { bottom: 166px; right: 22px; }
+        @media (max-width: 480px) {
+            .chatbot-toggle { bottom: 88px; right: 20px; }
+            .chatbot-window { bottom: 0; right: 0; }
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            light: '#e8f5e9',
+                            DEFAULT: '#2e7d32', // Verde principal
+                            dark: '#1b5e20',
+                            accent: '#aeea00' // Acento luminoso
+                        },
+                        cream: '#FDFBF7'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondos Dinámicos y Animaciones */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        
+        .bg-dynamic {
+            background: linear-gradient(-45deg, #0f172a, #1b5e20, #064e3b, #022c22);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-dark);
-            color: var(--text-light-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Background Particle Canvas */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4, .brand-font {
-            font-family: var(--font-serif);
-            letter-spacing: -0.02em;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #FFF 30%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gradient-text-gold {
-            background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Buttons & CTAs */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #E5C158 0%, #B8860B 100%);
-            color: #0A0D14;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 16px 36px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-            transition: var(--transition-smooth);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
-            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-light-main);
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 16px 36px;
-            border-radius: 50px;
-            text-decoration: none;
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(10px);
-            transition: var(--transition-smooth);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
-
-        /* Ambient Glows */
-        .glow-effect {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .glow-gold {
-            background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
-            width: 500px;
-            height: 500px;
-        }
-
-        /* ==========================================================================
-           HEADER / NAVBAR
-           ========================================================================== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 20px 0;
-            transition: var(--transition-smooth);
-        }
-
-        header.scrolled {
-            background: rgba(10, 13, 20, 0.85);
-            backdrop-filter: blur(15px);
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--accent-gold);
-        }
-
-        /* ==========================================================================
-           HERO SECTION (DARK)
-           ========================================================================== */
-        .hero {
-            padding: 180px 0 100px;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--border-glass);
-            border-radius: 30px;
-            font-size: 0.875rem;
-            color: var(--accent-gold-light);
-            margin-bottom: 24px;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            font-weight: 700;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light-muted);
-            margin-bottom: 36px;
-            font-weight: 300;
-            max-width: 540px;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Mockup 3D Container */
-        .mockup-container {
-            position: relative;
-            perspective: 1000px;
-        }
-
-        .mockup-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            padding: 30px;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-premium), var(--shadow-glow);
-            transform: rotateY(-8deg) rotateX(4deg);
-            transition: var(--transition-smooth);
-            position: relative;
-        }
-
-        .mockup-card:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-        }
-
-        .book-stack-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: -20px;
-            padding: 20px 0;
-        }
-
-        .book-cover {
-            width: 140px;
-            height: 200px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #1E293B, #0F172A);
-            border: 1px solid var(--accent-gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 16px;
-            text-align: center;
-            transition: var(--transition-smooth);
-        }
-
-        .book-cover:nth-child(1) { transform: translateX(20px) scale(0.9); opacity: 0.8; }
-        .book-cover:nth-child(2) { transform: translateY(-10px) z-index: 2; border-color: #FFF; }
-        .book-cover:nth-child(3) { transform: translateX(-20px) scale(0.9); opacity: 0.8; }
-
-        .book-cover i { color: var(--accent-gold); margin-bottom: 8px; }
-        .book-cover span { font-family: var(--font-serif); font-size: 0.75rem; font-weight: 700; color: #FFF; }
-
-        /* ==========================================================================
-           PROBLEM SECTION (DARK)
-           ========================================================================== */
-        .section-padding {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .section-subtitle {
-            color: var(--accent-gold);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .section-desc {
-            max-width: 700px;
-            margin: 0 auto 20px;
-            color: var(--text-dark-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
+        /* Glassmorphism y Tarjetas Premium */
         .glass-card {
-            background: var(--bg-dark-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--radius-md);
-            padding: 36px;
-            backdrop-filter: blur(12px);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(174, 234, 0, 0.2);
+            border-color: rgba(174, 234, 0, 0.5);
         }
 
-        .glass-card::before {
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(46, 125, 50, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card-light:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+        }
+
+        /* Luces Ambientales (Glows) */
+        .glow-effect { position: relative; }
+        .glow-effect::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0;
-            transition: var(--transition-smooth);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%; height: 120%;
+            background: radial-gradient(circle, rgba(174,234,0,0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(40px);
         }
 
-        .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--border-glass);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .glass-card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            background: rgba(212, 175, 55, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-gold);
-            margin-bottom: 24px;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: #FFF;
-        }
-
-        .card-desc {
-            color: var(--text-light-muted);
-            font-size: 0.95rem;
-        }
-
-        /* ==========================================================================
-           SOLUTION & EBOOKS SECTION (LIGHT CREAM SECTION - CONTRAST)
-           ========================================================================== */
-        .section-light {
-            background-color: var(--bg-light);
-            color: var(--text-dark-main);
+        /* Botones Premium */
+        .btn-premium {
             position: relative;
-            z-index: 2;
-        }
-
-        .section-light .section-title {
-            color: var(--text-dark-main);
-        }
-
-        .section-light .section-desc {
-            color: var(--text-dark-muted);
-        }
-
-        .ebooks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .light-card {
-            background: var(--bg-light-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .light-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent-gold);
-        }
-
-        .ebook-tag {
-            align-self: flex-start;
-            padding: 6px 12px;
-            background: rgba(212, 175, 55, 0.15);
-            color: #8B6508;
-            font-weight: 700;
-            font-size: 0.75rem;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .ebook-price-single {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark-main);
-            margin-top: 20px;
-        }
-
-        /* ==========================================================================
-           BENEFITS SECTION (DARK)
-           ========================================================================== */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .benefit-item {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .benefit-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--border-glass);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-gold);
-        }
-
-        /* ==========================================================================
-           PRICING SECTION (LIGHT CREAM)
-           ========================================================================== */
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-
-        .pricing-card {
-            background: var(--bg-light-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            transition: var(--transition-smooth);
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
-            transform: scale(1.03);
-            background: #FFFFFF;
-        }
-
-        .badge-featured {
-            position: absolute;
-            top: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #E5C158, #B8860B);
-            color: #0A0D14;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .price-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--text-dark-main);
-            font-family: var(--font-serif);
-            margin: 20px 0;
-        }
-
-        .price-number span {
-            font-size: 1rem;
-            color: var(--text-dark-muted);
-            font-family: var(--font-sans);
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .feature-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #F1F5F9;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-dark-muted);
-            font-size: 0.95rem;
-        }
-
-        .feature-list li i {
-            color: #10B981;
-            flex-shrink: 0;
-        }
-
-        /* ==========================================================================
-           TESTIMONIALS PLACEHOLDER (DARK)
-           ========================================================================== */
-        .placeholder-box {
-            border: 2px dashed var(--border-glass);
-            border-radius: var(--radius-lg);
-            padding: 60px 20px;
-            text-align: center;
-            background: rgba(18, 24, 38, 0.4);
-        }
-
-        .placeholder-box i {
-            color: var(--accent-gold);
-            margin-bottom: 16px;
-        }
-
-        /* ==========================================================================
-           FAQ SECTION (LIGHT CREAM)
-           ========================================================================== */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--bg-light-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            margin-bottom: 16px;
             overflow: hidden;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(174, 234, 0, 0.4);
         }
-
-        .faq-question {
-            padding: 24px;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark-main);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-family: var(--font-sans);
+        .btn-premium:hover {
+            box-shadow: 0 0 30px rgba(174, 234, 0, 0.8);
+            transform: scale(1.02);
         }
-
-        .faq-answer {
-            padding: 0 24px 24px;
-            color: var(--text-dark-muted);
-            font-size: 0.95rem;
-            display: none;
-            line-height: 1.7;
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
         }
+        .btn-premium:hover::after { left: 100%; }
 
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-icon {
-            transition: var(--transition-smooth);
-            color: var(--accent-gold);
-        }
-
-        /* Guarantee Badge */
-        .guarantee-box {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin-top: 40px;
-        }
-
-        /* ==========================================================================
-           FOOTER (DARK)
-           ========================================================================== */
-        footer {
-            background: #05070A;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 0 30px;
-            color: var(--text-light-muted);
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-links a {
-            color: var(--text-light-muted);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Scroll Animations */
+        /* Animaciones de Scroll (Fade In & Slide Up) */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-subtitle {
-                margin: 0 auto 36px;
-            }
-            .hero-cta-group {
-                justify-content: center;
-            }
-            .hero-title {
-                font-size: 2.75rem;
-            }
-            .pricing-card.featured {
-                transform: none;
-            }
+        /* Mockup 3D sutil */
+        .mockup-3d {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+            box-shadow: -20px 20px 50px rgba(0,0,0,0.5);
         }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .btn-primary, .btn-secondary {
-                width: 100%;
-            }
+        .mockup-3d:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         }
     </style>
 </head>
-<body>
+<body class="text-gray-800 antialiased selection:bg-brand-accent selection:text-brand-dark">
 
-    <!-- Particle Canvas background -->
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- Header / Navbar -->
-    <header id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <i data-lucide="cross" style="color: var(--accent-gold);"></i>
-                CorazonCreyente<span>777</span>
-            </a>
-            <a href="#precios" class="btn-primary" style="padding: 10px 24px; font-size: 0.875rem;">Obtener Pack</a>
-        </div>
-    </header>
-
-    <!-- HERO SECTION (DARK) -->
-    <section class="hero">
-        <div class="glow-effect glow-gold" style="top: 10%; left: -10%;"></div>
-        <div class="glow-effect glow-gold" style="bottom: 10%; right: -10%;"></div>
+    <!-- HERO SECTION (Fondo Dinámico Oscuro) -->
+    <section class="bg-dynamic min-h-screen flex items-center relative overflow-hidden pt-20 pb-16">
+        <!-- Partículas/Luces sutiles de fondo -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-accent/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
         
-        <div class="container hero-grid">
-            <div class="hero-content reveal">
-                <div class="hero-badge">
-                    <i data-lucide="sparkles" style="width: 16px;"></i> Colección Digital Espiritual
-                </div>
-                <h1 class="hero-title">Fortalece tu Fe y Comprende la Palabra <span class="gradient-text-gold">sin Complicaciones</span></h1>
-                <p class="hero-subtitle">Descubre una guía clara, práctica y cercana para acercarte a Dios, entender la Biblia fácilmente y enriquecer tu vida diaria de oración.</p>
-                <div class="hero-cta-group">
-                    <a href="#precios" class="btn-primary">
-                        Obtener Colección Completa <i data-lucide="arrow-right"></i>
-                    </a>
-                    <a href="#ebooks" class="btn-secondary">
-                        Explorar Ebooks
-                    </a>
-                </div>
-            </div>
-
-            <!-- 3D Mockup Display -->
-            <div class="mockup-container reveal">
-                <div class="mockup-card">
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <span style="color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;">FORMATO DIGITAL · DESCARGA INMEDIATA</span>
-                    </div>
-                    <div class="book-stack-visual">
-                        <div class="book-cover">
-                            <i data-lucide="book-open"></i>
-                            <span>Religión</span>
-                        </div>
-                        <div class="book-cover">
-                            <i data-lucide="book-marked"></i>
-                            <span>La Biblia</span>
-                        </div>
-                        <div class="book-cover">
-                            <i data-lucide="heart"></i>
-                            <span>Oraciones</span>
-                        </div>
-                    </div>
-                    <div style="text-align: center; margin-top: 20px; color: var(--text-light-muted); font-size: 0.85rem;">
-                        <i data-lucide="smartphone" style="width: 14px; vertical-align: middle;"></i> Compatible con celulares, tabletas y lectores digitales
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROBLEM SECTION (DARK) -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle">¿Te has sentido así?</p>
-                <h2 class="section-title gradient-text">El Desafío de Crecer en la Fe Hoy En Día</h2>
-            </div>
-            
-            <div class="problem-grid">
-                <div class="glass-card reveal">
-                    <div class="card-icon"><i data-lucide="help-circle"></i></div>
-                    <h3 class="card-title">¿Por dónde empezar?</h3>
-                    <p class="card-desc">Sientes el deseo profundo de acercarte a Dios, pero no sabes cuál es el primer paso práctico para construir un pilar espiritual sólido.</p>
-                </div>
-                <div class="glass-card reveal">
-                    <div class="card-icon"><i data-lucide="book-x"></i></div>
-                    <h3 class="card-title">Lectura compleja</h3>
-                    <p class="card-desc">Intentas leer la Biblia, pero la sintaxis y los tecnicismos te resultan difíciles de comprender o aplicar a tus vivencias actuales.</p>
-                </div>
-                <div class="glass-card reveal">
-                    <div class="card-icon"><i data-lucide="message-square-off"></i></div>
-                    <h3 class="card-title">Dificultad al orar</h3>
-                    <p class="card-desc">Deseas hablar con Dios en momentos difíciles o de gratitud, pero te cuesta encontrar las palabras correctas para expresar lo que sientes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTION & EBOOKS SECTION (LIGHT CREAM SECTION - CONTRAST) -->
-    <section class="section-padding section-light" id="ebooks">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle" style="color: #8B6508;">La Solución</p>
-                <h2 class="section-title">Una Guía Sencilla, Directa y Transformadora</h2>
-                <p class="section-desc">Diseñados especialmente para ti, sin importar si estás iniciando o si buscas renovar tu vida espiritual.</p>
-            </div>
-
-            <div class="ebooks-grid">
-                <!-- Ebook 1 -->
-                <div class="light-card reveal">
-                    <div>
-                        <span class="ebook-tag">Ebook 1</span>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende de Religión</h3>
-                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Comprende los fundamentos clave de la fe cristiana explicados de forma clara, amigable y estructurada.</p>
-                    </div>
-                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
-                </div>
-
-                <!-- Ebook 2 -->
-                <div class="light-card reveal">
-                    <div>
-                        <span class="ebook-tag">Ebook 2</span>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende de la Biblia</h3>
-                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Un estudio bíblico guiado que elimina la complejidad para que comprendas las Sagradas Escrituras sin tecnicismos.</p>
-                    </div>
-                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
-                </div>
-
-                <!-- Ebook 3 -->
-                <div class="light-card reveal">
-                    <div>
-                        <span class="ebook-tag">Ebook 3</span>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif);">Aprende Oraciones</h3>
-                        <p style="color: var(--text-dark-muted); font-size: 0.95rem;">Una recopilación de oraciones poderosas listas para aplicar en distintas situaciones: protección, sanación, paz y gratitud.</p>
-                    </div>
-                    <div class="ebook-price-single">$5 <span style="font-size: 0.9rem; font-weight: normal;">USD</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BENEFITS SECTION (DARK) -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle">Beneficios Principales</p>
-                <h2 class="section-title gradient-text">Todo lo que Necesitas para tu Crecimiento Espiritual</h2>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-item reveal">
-                    <div class="benefit-icon"><i data-lucide="check-circle-2"></i></div>
-                    <div>
-                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Lenguaje Claro y Accesible</h4>
-                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Sin conceptos rebuscados. Contenido directo al corazón y fácil de asimilar.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item reveal">
-                    <div class="benefit-icon"><i data-lucide="zap"></i></div>
-                    <div>
-                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Aplicación Diaria</h4>
-                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Enseñanzas y oraciones diseñadas para integrarse en tu rutina diaria.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item reveal">
-                    <div class="benefit-icon"><i data-lucide="download"></i></div>
-                    <div>
-                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Acceso e Inmediatez</h4>
-                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Descarga tus ebooks al instante en cualquier dispositivo móvil o computadora.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item reveal">
-                    <div class="benefit-icon"><i data-lucide="shield-check"></i></div>
-                    <div>
-                        <h4 style="color: #FFF; font-size: 1.1rem; margin-bottom: 6px;">Garantía de Valor</h4>
-                        <p style="color: var(--text-light-muted); font-size: 0.9rem;">Respaldado por la marca CorazonCreyente777 y su compromiso de calidad.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS PLACEHOLDER (DARK) -->
-    <section class="section-padding" style="padding-top: 0;">
-        <div class="container">
-            <div class="placeholder-box reveal">
-                <i data-lucide="quote" style="width: 40px; height: 40px;"></i>
-                <h3 class="gradient-text-gold" style="font-size: 1.25rem; margin-bottom: 8px;">Próximamente: Historias de la Comunidad</h3>
-                <p style="color: var(--text-light-muted); max-width: 500px; margin: 0 auto; font-size: 0.9rem;">
-                    Esta sección está reservada para compartir los testimonios reales de nuestra comunidad a medida que compartan sus experiencias con la colección CorazonCreyente777.
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-white reveal active">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-accent/20 border border-brand-accent/50 text-brand-accent text-sm font-semibold tracking-wider mb-6">
+                    PROVEEDOR MAYORISTA LÍDER
+                </span>
+                <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                    El stock que tu negocio necesita, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-green-400">sin interrupciones.</span>
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 font-light max-w-lg">
+                    El Remanso Forrajería Mayorista. Alimentos, suplementos y forraje con variedad y precios competitivos para granjas, comercios y agropecuarias que compran en volumen.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING SECTION (LIGHT CREAM) -->
-    <section class="section-padding section-light" id="precios">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle" style="color: #8B6508;">Inversión en tu Fe</p>
-                <h2 class="section-title">Elige la Opción Ideal para Ti</h2>
-            </div>
-
-            <div class="pricing-cards">
-                <!-- Individual -->
-                <div class="pricing-card reveal">
-                    <h3 style="font-size: 1.25rem; color: var(--text-dark-main);">Ebook Individual</h3>
-                    <p style="color: var(--text-dark-muted); font-size: 0.85rem; margin-top: 4px;">Adquiere el título de tu preferencia</p>
-                    <div class="price-number">$5 <span>USD / c.u.</span></div>
-                    <ul class="feature-list">
-                        <li><i data-lucide="check"></i> Elección de 1 Ebook digital</li>
-                        <li><i data-lucide="check"></i> Formato de lectura accesible</li>
-                        <li><i data-lucide="check"></i> Descarga inmediata</li>
-                    </ul>
-                    <a href="https://wa.me/message/MBKUSJ3RNLP3B1" class="btn-secondary" style="width: 100%; color: var(--text-dark-main); border-color: #CBD5E1;" target="_blank" rel="noopener noreferrer">Comprar Individual</a>
-                </div>
-
-                <!-- Pack Combinado (Featured) -->
-                <div class="pricing-card featured reveal">
-                    <div class="badge-featured">Opción Recomendada · Ahorra $3 USD</div>
-                    <h3 style="font-size: 1.5rem; color: var(--text-dark-main);">Pack Combinado (3 Ebooks)</h3>
-                    <p style="color: var(--text-dark-muted); font-size: 0.85rem; margin-top: 4px;">Colección completa CorazonCreyente777</p>
-                    <div class="price-number" style="color: #8B6508;">$12 <span>USD</span></div>
-                    <ul class="feature-list">
-                        <li><i data-lucide="check"></i> <strong>Ebook 1:</strong> Aprende de Religión</li>
-                        <li><i data-lucide="check"></i> <strong>Ebook 2:</strong> Aprende de la Biblia</li>
-                        <li><i data-lucide="check"></i> <strong>Ebook 3:</strong> Aprende Oraciones</li>
-                        <li><i data-lucide="check"></i> Descarga de la colección en un solo enlace</li>
-                        <li><i data-lucide="check"></i> Acceso permanente a los contenidos</li>
-                    </ul>
-                    <a href="https://wa.me/message/MBKUSJ3RNLP3B1" class="btn-primary" style="width: 100%;" target="_blank" rel="noopener noreferrer">
-                        Obtener Pack Completo por $12 USD
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contacto" class="btn-premium bg-brand-accent text-brand-dark font-bold py-4 px-8 rounded-lg text-center flex items-center justify-center">
+                        SOLICITAR LISTA DE PRECIOS
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="#solucion" class="glass-card text-white font-semibold py-4 px-8 rounded-lg text-center hover:bg-white/10">
+                        Conoce más
                     </a>
                 </div>
             </div>
+            <div class="relative glow-effect reveal active delay-200">
+                <!-- Mockup de producto / almacén -->
+                <img src="forrajes-herradura.jpg.webp" alt="Forrajes La Herradura, alimento y forraje mayorista" class="rounded-2xl mockup-3d object-cover h-[500px] w-full border border-white/10">
+            </div>
+        </div>
+    </section>
 
-            <!-- Guarantee Notice -->
-            <div class="guarantee-box reveal" style="max-width: 800px; margin: 40px auto 0;">
-                <i data-lucide="shield" style="width: 48px; height: 48px; color: #8B6508; flex-shrink: 0;"></i>
-                <div>
-                    <h4 style="color: var(--text-dark-main); font-size: 1.05rem; margin-bottom: 4px;">Garantía de Satisfacción de 7 Días</h4>
-                    <p style="color: var(--text-dark-muted); font-size: 0.9rem;">Pruébalo sin riesgo. Si dentro de los primeros 7 días consideras que el contenido no aporta a tu vida espiritual, puedes solicitar la devolución de tu dinero.</p>
+    <!-- SECCIÓN DEL PROBLEMA (Fondo Crema/Claro) -->
+    <section id="problema" class="bg-cream py-24 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">¿Dependes de demasiados distribuidores para abastecerte?</h2>
+            <p class="text-xl text-gray-600 leading-relaxed mb-10">
+                Sabemos lo frustrante que es lidiar con quiebres de stock constantes, precios que cambian sin aviso y la pérdida de tiempo al tener que coordinar con múltiples proveedores para conseguir el alimento balanceado que tus clientes o animales necesitan.
+            </p>
+            <div class="w-24 h-1 bg-brand mx-auto rounded-full"></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SOLUCIÓN Y BENEFICIOS (Alternando oscuro de nuevo con Glassmorphism) -->
+    <section id="solucion" class="bg-gray-900 py-24 relative overflow-hidden">
+        <!-- Luces de fondo -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-dark/10 filter blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">Todo en un solo proveedor de confianza</h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">En El Remanso, unificamos tu cadena de suministro. Somos tu aliado estratégico para que ahorres tiempo y dinero comprando al por mayor.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                <!-- Beneficio 1 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-accent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Precios por Volumen</h3>
+                    <p class="text-gray-400 text-sm">Escalas de precios competitivos diseñados específicamente para proteger tu margen de ganancia comercial.</p>
+                </div>
+                <!-- Beneficio 2 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-accent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Alta Variedad</h3>
+                    <p class="text-gray-400 text-sm">Alimento balanceado, forraje y suplementos para múltiples especies en un único catálogo consolidado.</p>
+                </div>
+                <!-- Beneficio 3 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-accent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Stock Constante</h3>
+                    <p class="text-gray-400 text-sm">Garantizamos disponibilidad continua para que tus estanterías o comederos jamás queden vacíos.</p>
+                </div>
+                <!-- Beneficio 4 -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-accent">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ahorro de Tiempo</h3>
+                    <p class="text-gray-400 text-sm">Atención ágil orientada exclusivamente a comercios, granjas y distribuidores.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ SECTION (LIGHT CREAM) -->
-    <section class="section-padding section-light" style="padding-top: 0;">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle" style="color: #8B6508;">Resolvamos tus dudas</p>
-                <h2 class="section-title">Preguntas Frecuentes</h2>
+    <!-- SECCIÓN CARACTERÍSTICAS / PRODUCTOS (Fondo Crema) -->
+    <section class="bg-cream py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative glow-effect reveal">
+                    <img src="productos-agropecuarios.webp" alt="Productos agropecuarios" class="rounded-2xl shadow-2xl object-cover h-[600px] w-full">
+                    <!-- Tarjeta flotante -->
+                    <div class="absolute -bottom-6 -right-6 glass-card-light p-6 rounded-xl hidden md:block">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand text-white p-3 rounded-full">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">Calidad Premium</p>
+                                <p class="text-xs text-gray-500">Selección garantizada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 reveal">
+                    <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-8">Nuestra línea de productos</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-brand-light p-2 rounded-lg text-brand">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Alimentos Balanceados y Concentrados</h4>
+                                <p class="text-gray-600 mt-1">Líneas completas para [aves, ganado, mascotas, equinos — insertar aquí según catálogo], asegurando nutrición óptima.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-brand-light p-2 rounded-lg text-brand">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Forraje y Suplementos Nutricionales</h4>
+                                <p class="text-gray-600 mt-1">Complementos esenciales para potenciar el rendimiento y la salud animal en grandes volúmenes.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-brand-light p-2 rounded-lg text-brand">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900">Exclusividad B2B</h4>
+                                <p class="text-gray-600 mt-1">Sistema de venta exclusivo o preferente al por mayor. Pedidos por WhatsApp.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="faq-container reveal">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>¿Cómo recibo los ebooks tras realizar la compra?</span>
-                        <i data-lucide="chevron-down" class="faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Los ebooks se entregan en formato digital de descarga inmediata. Si adquieres el pack combinado de $12 USD, recibirás los tres ebooks organizados mediante un solo enlace de descarga.
+    <!-- PRUEBA SOCIAL / TESTIMONIOS (Placeholders reales según instrucciones) -->
+    <section class="bg-gray-50 py-24 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12">Lo que dicen nuestros clientes mayoristas</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial Placeholder 1 -->
+                <div class="glass-card-light p-8 rounded-2xl text-left relative">
+                    <p class="text-gray-600 italic mb-6">"[PLACEHOLDER: Testimonio de un dueño de agropecuaria destacando el cumplimiento en las entregas y la variedad del stock]."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">[Nombre del Cliente]</p>
+                            <p class="text-sm text-brand font-semibold">[Agropecuaria / Comercio]</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>¿Necesito conocimientos previos sobre la Biblia o religión?</span>
-                        <i data-lucide="chevron-down" class="faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        No. La colección está desarrollada con un lenguaje claro, sencillo y sin tecnicismos complicados, ideal tanto para principiantes como para personas que desean fortalecer su fe.
+                <!-- Testimonial Placeholder 2 -->
+                <div class="glass-card-light p-8 rounded-2xl text-left relative">
+                    <p class="text-gray-600 italic mb-6">"[PLACEHOLDER: Testimonio de un productor o ganadero sobre la calidad del alimento balanceado y los precios competitivos]."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">[Nombre del Cliente]</p>
+                            <p class="text-sm text-brand font-semibold">[Productor / Granjero]</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>¿En qué dispositivos puedo leer los ebooks?</span>
-                        <i data-lucide="chevron-down" class="faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Al ser en formato digital accesible, puedes leerlos cómodamente en tu teléfono celular, tableta, lector de libros electrónicos o computadora.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>¿Puedo comprar los ebooks por separado?</span>
-                        <i data-lucide="chevron-down" class="faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Sí, cada ebook puede adquirirse de forma individual a $5 USD cada uno. Sin embargo, con el pack combinado obtienes los tres ebooks por $12 USD (ahorrando $3 USD en total).
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>¿Cómo funciona la garantía de devolución?</span>
-                        <i data-lucide="chevron-down" class="faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        Ofrecemos una garantía de satisfacción de 7 días. Si el producto no cumple con tus expectativas, cuentas con ese plazo para solicitar el reembolso de tu compra.
+                <!-- Testimonial Placeholder 3 -->
+                <div class="glass-card-light p-8 rounded-2xl text-left relative">
+                    <p class="text-gray-600 italic mb-6">"[PLACEHOLDER: Testimonio de una tienda de mascotas resaltando el ahorro de tiempo al tener un solo proveedor]."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-bold text-gray-900">[Nombre del Cliente]</p>
+                            <p class="text-sm text-brand font-semibold">[Tienda de Mascotas]</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER (DARK) -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo">
-                    <i data-lucide="cross" style="color: var(--accent-gold);"></i>
-                    CorazonCreyente<span>777</span>
-                </a>
-                <div class="footer-links">
-                    <a href="#ebooks">Ebooks</a>
-                    <a href="#precios">Precios</a>
-                    <a href="mailto:ventas@corazoncreyente777.com">Contacto</a>
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="bg-cream py-24">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿A quiénes están dirigidos sus productos?</h3>
+                    <p class="text-gray-600">Nuestro servicio está diseñado para granjeros, ganaderos, dueños de mascotas, tiendas de mascotas, agropecuarias y comercios minoristas que buscan abastecerse al por mayor.</p>
                 </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿Venden al por menor?</h3>
+                    <p class="text-gray-600">En El Remanso nos dedicamos a la venta exclusiva o preferente al por mayor. Nuestro objetivo es ofrecer variedad y precios competitivos para clientes que compran en volumen.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿Qué tipo de alimentos y productos venden?</h3>
+                    <p class="text-gray-600">Comercializamos alimentos balanceados y concentrados, forraje y suplementos nutricionales para distintos tipos de animales, ofreciendo todo lo que necesitas en un solo proveedor.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">¿Cómo funcionan los precios?</h3>
+                    <p class="text-gray-600">Ofrecemos precios especiales y competitivos basados en compras al por mayor. [NOTA: Aquí se puede detallar la modalidad exacta de precios por volumen, escalones o cotización a pedido según corresponda].</p>
+                </div>
+
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 CorazonCreyente777. Todos los derechos reservados. Formato digital.</p>
+        </div>
+    </section>
+
+    <!-- CTA FINAL (Fondo Oscuro Premium) -->
+    <section class="bg-brand-dark py-24 relative overflow-hidden" id="contacto">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Asegura el abastecimiento de tu negocio hoy mismo</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Únete a los comercios y productores que ya confían en El Remanso como su proveedor mayorista principal.</p>
+            <a href="https://wa.me/+5493735504819" target="_blank" rel="noopener noreferrer" class="inline-block btn-premium bg-brand-accent text-brand-dark font-extrabold text-lg py-5 px-10 rounded-xl uppercase tracking-wide">
+                SOLICITAR COTIZACIÓN AHORA
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER MINIMALISTA -->
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="text-2xl font-black text-white tracking-tighter">El Remanso<span class="text-brand-accent">.</span></span>
+                <p class="text-sm mt-2">Forrajería Mayorista. Tu socio en nutrición animal.</p>
+            </div>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="hover:text-brand-accent transition-colors">Términos y Condiciones</a>
+                <a href="#" class="hover:text-brand-accent transition-colors">Políticas de Privacidad</a>
+                <a href="#" class="hover:text-brand-accent transition-colors">Contacto</a>
             </div>
         </div>
     </footer>
 
-    <!-- Lucide Icons Script Init -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/+5493735504819" target="_blank" rel="noopener noreferrer" class="whatsapp-float fixed bottom-6 right-6 z-50 group flex items-center justify-center" aria-label="Escríbenos por WhatsApp">
+        <!-- Mensaje emergente (Tooltip) que aparece al pasar el cursor -->
+        <span class="absolute right-20 bg-white text-gray-800 text-sm font-bold px-4 py-2 rounded-xl shadow-lg opacity-0 translate-x-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap pointer-events-none border border-gray-100">
+            ¡Escríbenos por WhatsApp!
+        </span>
+
+        <!-- Botón principal -->
+        <div class="relative bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] transition-all duration-300 transform group-hover:scale-110 flex items-center justify-center">
+            <!-- Icono SVG de WhatsApp -->
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.128.552 4.195 1.599 6.012L.071 24l6.103-1.603a11.96 11.96 0 005.857 1.528h.004c6.645 0 12.031-5.385 12.031-12.031S18.676 0 12.031 0zm0 21.906a9.92 9.92 0 01-5.067-1.39l-.364-.216-3.766.988.995-3.668-.236-.376a9.907 9.907 0 01-1.52-5.337C2.073 5.485 6.558 1.002 12.031 1.002c5.474 0 9.959 4.484 9.959 9.957 0 5.474-4.485 9.947-9.959 9.947zM17.498 14.5c-.301-.151-1.782-.879-2.06-.979-.278-.101-.481-.151-.683.151-.202.302-.782.979-.958 1.181-.176.202-.353.227-.655.076-1.517-.768-2.585-1.365-3.619-2.924-.226-.341.229-.311.516-.884.075-.15.038-.278-.038-.429-.075-.151-.683-1.645-.935-2.253-.245-.591-.496-.511-.683-.521-.176-.01-.378-.01-.58-.01-.202 0-.53.076-.807.378-.278.302-1.06 1.033-1.06 2.518s1.085 2.923 1.236 3.125c.151.202 2.132 3.255 5.166 4.561 2.227.957 2.952.88 3.454.739.585-.164 1.782-.728 2.033-1.432.252-.704.252-1.308.176-1.432-.075-.124-.277-.202-.579-.353z"/>
+            </svg>
+        </div>
+    </a>
+
+    <!-- ASISTENTE VIRTUAL -->
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir asistente virtual" title="Abrir asistente virtual">
+        <span aria-hidden="true">🌾</span>
+    </button>
+
+    <div id="chatbot-window" class="chatbot-window hidden" aria-label="Asistente virtual">
+        <div class="chatbot-header">
+            <div class="header-info">
+                <span aria-hidden="true">🚜</span>
+                <div><h3>Asistente Virtual</h3><p>Forrajería El Remanso</p></div>
+            </div>
+            <div class="header-actions">
+                <button id="chatbot-clear" title="Limpiar chat" aria-label="Limpiar chat">🗑</button>
+                <button id="chatbot-close" title="Cerrar" aria-label="Cerrar chat">×</button>
+            </div>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="message bot"><div class="message-content">¡Hola! Soy el asistente virtual de nuestra forrajería.<br>¿En qué puedo ayudarte hoy?</div></div>
+            <div id="quick-replies" class="quick-replies">
+                <button class="quick-btn" data-message="Alimentos para perros">Alimentos para perros</button>
+                <button class="quick-btn" data-message="Alimentos para gatos">Alimentos para gatos</button>
+                <button class="quick-btn" data-message="Productos para caballos">Productos para caballos</button>
+                <button class="quick-btn" data-message="Forrajes y semillas">Forrajes y semillas</button>
+            </div>
+        </div>
+        <form class="chatbot-input" id="chatbot-form">
+            <input type="text" id="chatbot-input-field" placeholder="Escribí tu consulta acá..." autocomplete="off" maxlength="500">
+            <button id="chatbot-send" type="submit" aria-label="Enviar mensaje">➤</button>
+        </form>
+    </div>
+
+    <script src="forrajeria-ai/public/app.js"></script>
+
+    <!-- SCRIPT PARA ANIMACIONES AL SCROLL -->
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
 
-        // Canvas Particles System
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * 0.4 - 0.2;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-            }
-
-            draw() {
-                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.floor(window.innerWidth / 20);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-
-        // Navbar Scroll Blur Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger on load
         });
-
-        // FAQ Toggle Accordion
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-
-        // Scroll Reveal Animations
-        const observerOptions = {
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
